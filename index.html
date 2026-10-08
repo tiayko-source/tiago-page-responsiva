@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiago Casaca · Portfólio</title>
+  <meta name="description" content="Portfólio de Tiago Casaca — Técnico de Informática e Sistemas, focado em Cibersegurança.">
+  <script>
+    // Aplica o tema guardado antes de desenhar a página (evita "piscar")
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (!theme) theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- ========== INTRO ========== -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__terminal" id="terminal"></div>
+    <h1 class="intro__name" id="introName" data-text="TIAGO CASACA"></h1>
+    <p class="intro__sub" id="introSub" data-i18n="intro.sub">Técnico de Informática &amp; Sistemas</p>
+    <div class="intro__panel intro__panel--top"></div>
+    <div class="intro__panel intro__panel--bottom"></div>
+    <button class="intro__skip" id="skipIntro" data-i18n="intro.skip">saltar intro ›</button>
+  </div>
+
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ========== NAV ========== -->
+  <header class="nav" id="nav">
+    <a href="#inicio" class="nav__logo">TC<span>.</span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#percurso" data-i18n="nav.path">Percurso</a>
+      <a href="#competencias" data-i18n="nav.skills">Competências</a>
+      <a href="#cursos" data-i18n="nav.courses">Cursos</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <div class="nav__controls">
+      <div class="seg" role="group" aria-label="Língua / Language">
+        <button data-lang="pt" aria-pressed="true">PT</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="fr" aria-pressed="false">FR</button>
+      </div>
+      <div class="seg seg--theme" role="group" aria-label="Tema">
+        <button data-theme-btn="dark" aria-label="Modo escuro" title="Dark mode">☾</button>
+        <button data-theme-btn="light" aria-label="Modo claro" title="Light mode">☀</button>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio">
+      <div class="hero__text">
+        <p class="hero__hello reveal" data-i18n="hero.hello">&gt; Olá, eu sou</p>
+        <h2 class="hero__name">
+          <span class="line"><span class="word">Tiago</span></span>
+          <span class="line"><span class="word accent">Casaca</span></span>
+        </h2>
+        <p class="hero__role reveal">
+          <span class="mono">// </span><span id="typed"></span><span class="caret">|</span>
+        </p>
+        <p class="hero__lead reveal" data-i18n="hero.lead">
+          Focado em <strong>cibersegurança</strong>, com o objetivo de construir uma carreira no combate à
+          <strong>cibercriminalidade</strong>. À procura de um estágio em TI ou Cibersegurança.
+        </p>
+        <div class="hero__cta reveal">
+          <a href="#contacto" class="btn btn--primary magnetic" data-i18n="hero.cta1">Falar comigo</a>
+          <a href="images/CV - Tiago Casaca (Portuguese Version).pdf" class="btn btn--ghost magnetic" download data-i18n="hero.cta2">Descarregar CV</a>
+          <button type="button" class="btn btn--ghost magnetic" id="openLetter" data-i18n="hero.cta3">Carta de apresentação</button>
+        </div>
+      </div>
+
+      <div class="hero__photo reveal" id="tilt">
+        <div class="photo-ring"></div>
+        <div class="photo-frame">
+          <img src="images/Perfil.jpeg" alt="Tiago Casaca">
+          <div class="photo-scan"></div>
+        </div>
+        <div class="badge badge--1">
+          <span class="dot"></span>
+          <span class="badge__text">
+            <span data-i18n="hero.badge">À procura de estágio</span>
+            <small data-i18n="hero.badgeDate">Início de dezembro – fim de abril</small>
+          </span>
+        </div>
+        <div class="badge badge--2">
+          <svg class="eu-flag" viewBox="0 0 30 20" aria-hidden="true">
+            <rect width="30" height="20" rx="2" fill="#003399"/>
+            <g fill="#ffcc00">
+              <circle cx="15" cy="4" r="1"/><circle cx="18" cy="4.8" r="1"/><circle cx="20.2" cy="7" r="1"/>
+              <circle cx="21" cy="10" r="1"/><circle cx="20.2" cy="13" r="1"/><circle cx="18" cy="15.2" r="1"/>
+              <circle cx="15" cy="16" r="1"/><circle cx="12" cy="15.2" r="1"/><circle cx="9.8" cy="13" r="1"/>
+              <circle cx="9" cy="10" r="1"/><circle cx="9.8" cy="7" r="1"/><circle cx="12" cy="4.8" r="1"/>
+            </g>
+          </svg>
+          Erasmus+
+        </div>
+      </div>
+
+      <a href="#sobre" class="scroll-hint" aria-label="Scroll">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats">
+      <div class="stat reveal"><b data-count="3">0</b><span data-i18n="stats.1">estágios concluídos</span></div>
+      <div class="stat reveal"><b data-count="20" data-suffix="/20">0</b><span data-i18n="stats.2">nota máxima no Erasmus+</span></div>
+      <div class="stat reveal"><b data-count="3">0</b><span data-i18n="stats.3">línguas</span></div>
+      <div class="stat reveal"><b data-count="2">0</b><span data-i18n="stats.4">países de trabalho</span></div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section class="section" id="sobre">
+      <h2 class="section__title reveal"><span class="num">01</span> <span data-i18n="about.title">Sobre mim</span></h2>
+      <div class="about">
+        <figure class="about__photo reveal">
+          <img src="images/Escuteiros.jpeg" alt="Tiago Casaca nos escuteiros">
+        </figure>
+        <div class="about__text reveal">
+          <p data-i18n="about.p1">
+            Escuteiro com forte sentido de <mark>responsabilidade</mark>, <mark>organização</mark> e
+            <mark>espírito de equipa</mark>, complementado por conhecimentos de Java e C.
+            Focado em cibersegurança, com o objetivo de construir uma carreira na Polícia Judiciária.
+          </p>
+          <p data-i18n="about.p2">
+            Procuro uma oportunidade de estágio na área das Tecnologias de Informação ou da
+            Cibersegurança para desenvolver competências práticas, contribuir de forma responsável
+            para a empresa e enfrentar desafios técnicos.
+          </p>
+        </div>
+      </div>
+      <div class="traits">
+        <div class="trait reveal"><span class="trait__icon">◆</span><h3 data-i18n="trait.1.h">Organizado</h3><p data-i18n="trait.1.p">Planeamento e método em cada tarefa.</p></div>
+        <div class="trait reveal"><span class="trait__icon">◆</span><h3 data-i18n="trait.2.h">Responsável</h3><p data-i18n="trait.2.p">Compromisso que vem dos escuteiros.</p></div>
+        <div class="trait reveal"><span class="trait__icon">◆</span><h3 data-i18n="trait.3.h">Pensamento Crítico</h3><p data-i18n="trait.3.p">Analisar antes de agir — essencial em segurança.</p></div>
+        <div class="trait reveal"><span class="trait__icon">◆</span><h3 data-i18n="trait.4.h">Criativo</h3><p data-i18n="trait.4.p">Criar e implementar ideias novas.</p></div>
+      </div>
+    </section>
+
+    <!-- ========== PERCURSO ========== -->
+    <section class="section" id="percurso">
+      <h2 class="section__title reveal"><span class="num">02</span> <span data-i18n="path.title">Percurso</span></h2>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline__line"><div class="timeline__progress" id="timelineProgress"></div></div>
+
+        <article class="tl-item reveal">
+          <div class="tl-item__date"><b>2026</b><span data-i18n="path.1.date">18 Mai – 26 Jul</span></div>
+          <div class="tl-item__dot"></div>
+          <div class="tl-item__card">
+            <div class="tl-item__meta"><span class="tag tag--gold">Erasmus+</span> <span data-i18n="path.1.place">Žirmūnai, Lituânia</span></div>
+            <div class="tl-item__head">
+              <img class="logo logo--wide logo--mono" src="images/logos/robotikos.png" alt="Robotikos Mokykla"><img class="logo logo--wide logo--color" src="images/logos/robotikos-cor.png" alt="Robotikos Mokykla">
+              <h3 data-i18n="path.1.h">Assistente de IT — Robotikos Mokykla</h3>
+            </div>
+            <p data-i18n="path.1.p">Experiência prática com robótica, trabalho em equipa, criar e implementar ideias, gestão de sites e testes de projetos.</p>
+            <div class="grade"><span data-count="20">0</span>/20</div>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-item__date"><b>2026</b><span data-i18n="path.2.date">18 Fev – 15 Mai</span></div>
+          <div class="tl-item__dot"></div>
+          <div class="tl-item__card">
+            <div class="tl-item__meta"><span class="tag" data-i18n="tag.internship">Estágio</span> <span data-i18n="path.2.place">Entrecampos, Lisboa</span></div>
+            <div class="tl-item__head">
+              <img class="logo logo--mono" src="images/logos/dgeg.png" alt="DGEG"><img class="logo logo--color" src="images/logos/dgeg-cor.png" alt="DGEG">
+              <h3 data-i18n="path.2.h">Assistente de IT — Direção-Geral de Energia e Geologia</h3>
+            </div>
+            <p data-i18n="path.2.p">Suporte, reparações, gestão de tickets, helpdesk e SQL.</p>
+            <div class="grade"><span data-count="19">0</span>/20</div>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-item__date"><b>2025</b><span data-i18n="path.3.date">29 Mai – 30 Jul</span></div>
+          <div class="tl-item__dot"></div>
+          <div class="tl-item__card">
+            <div class="tl-item__meta"><span class="tag" data-i18n="tag.internship">Estágio</span> Santa Iria da Azóia</div>
+            <div class="tl-item__head">
+              <img class="logo logo--mono" src="images/logos/aesia.png" alt="AESIA — Agrupamento de Escolas de Santa Iria de Azóia"><img class="logo logo--color" src="images/logos/aesia-cor.png" alt="AESIA — Agrupamento de Escolas de Santa Iria de Azóia">
+              <h3 data-i18n="path.3.h">Assistente de IT — Escola EB 2,3 Pirescoxe</h3>
+            </div>
+            <p data-i18n="path.3.p">Suporte, reparações, instalação de câmaras de vigilância e receção e organização de kits de informática.</p>
+            <div class="grade"><span data-count="19">0</span>/20</div>
+          </div>
+        </article>
+
+        <article class="tl-item reveal">
+          <div class="tl-item__dot"></div>
+          <div class="tl-item__card">
+            <div class="tl-item__meta"><span class="tag" data-i18n="tag.education">Formação</span> Escola de Comércio de Lisboa</div>
+            <h3 data-i18n="path.4.h">Técnico de Informática e Sistemas</h3>
+            <p data-i18n="path.4.p">Dupla certificação: escolar de nível secundário e profissional de nível 4 da União Europeia.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== COMPETÊNCIAS ========== -->
+    <section class="section" id="competencias">
+      <h2 class="section__title reveal"><span class="num">03</span> <span data-i18n="skills.title">Competências</span></h2>
+
+      <div class="skills">
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">&lt;/&gt;</code>
+          <h3>Java &amp; JavaScript</h3>
+        </div>
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">{ C }</code>
+          <h3 data-i18n="skills.c">Linguagem C</h3>
+        </div>
+        <div class="skill-card skill-card--featured reveal">
+          <code class="skill-card__icon">🔒</code>
+          <h3 data-i18n="skills.cyber.h">Cibersegurança</h3>
+          <p data-i18n="skills.cyber.p">A área onde quero construir carreira.</p>
+        </div>
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">py</code>
+          <h3>Python</h3>
+          <p data-i18n="skills.python">Noções básicas.</p>
+        </div>
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">#</code>
+          <h3>HTML &amp; CSS</h3>
+          <p data-i18n="skills.html">Noções básicas.</p>
+        </div>
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">SQL</code>
+          <h3>SQL &amp; Helpdesk</h3>
+          <p data-i18n="skills.sql">Gestão de tickets e suporte técnico.</p>
+        </div>
+        <div class="skill-card reveal">
+          <code class="skill-card__icon">AI</code>
+          <h3 data-i18n="skills.claude.h">Experiência com Claude</h3>
+          <p data-i18n="skills.claude.p">Usado em contexto profissional, no estágio Erasmus+ e em trabalho.</p>
+        </div>
+      </div>
+
+      <h3 class="subhead reveal" data-i18n="langs.title">Línguas</h3>
+      <div class="langs">
+        <div class="lang reveal" data-level="5"><span class="lang__name" data-i18n="langs.pt">Português</span><span class="lang__bar"><i></i></span><span class="lang__lvl" data-i18n="langs.native">Nativo</span></div>
+        <div class="lang reveal" data-level="4"><span class="lang__name" data-i18n="langs.en">Inglês</span><span class="lang__bar"><i></i></span><span class="lang__lvl" data-i18n="langs.adv">Avançado</span></div>
+        <div class="lang reveal" data-level="1"><span class="lang__name" data-i18n="langs.fr">Francês</span><span class="lang__bar"><i></i></span><span class="lang__lvl" data-i18n="langs.basic">Iniciante</span></div>
+      </div>
+    </section>
+
+    <!-- ========== CURSOS ========== -->
+    <section class="section" id="cursos">
+      <h2 class="section__title reveal"><span class="num">04</span> <span data-i18n="courses.title">Cursos não escolares</span></h2>
+      <div class="courses">
+        <article class="course reveal">
+          <span class="course__org" data-i18n="courses.1.org">Centro Nacional de Cibersegurança</span>
+          <h3>Cyber-Secure Citizen</h3>
+          <p data-i18n="courses.1.p">Formação em boas práticas de segurança digital para cidadãos.</p>
+        </article>
+        <article class="course reveal">
+          <span class="course__org" data-i18n="courses.2.org">E-REDES · Direção-Geral da Educação</span>
+          <h3 data-i18n="courses.2.h">Academia Digital para Pais</h3>
+          <p data-i18n="courses.2.p">Iniciativa que oferece a pais e encarregados de educação de alunos do Ensino Básico sessões de capacitação em competências digitais.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="section contact" id="contacto">
+      <h2 class="section__title reveal"><span class="num">05</span> <span data-i18n="contact.title">Contacto</span></h2>
+      <p class="contact__big reveal" data-i18n="contact.big">Vamos <span class="accent">trabalhar juntos?</span></p>
+      <div class="contact__list">
+        <a class="contact__item reveal magnetic" href="mailto:5781@eclisboa.net">
+          <span class="contact__label">Email</span>5781@eclisboa.net
+        </a>
+        <a class="contact__item reveal magnetic" href="tel:+351933180583">
+          <span class="contact__label" data-i18n="contact.phone">Telemóvel</span>+351 933 180 583
+        </a>
+        <a class="contact__item reveal magnetic" href="https://www.instagram.com/ti4go.c/" target="_blank" rel="noopener">
+          <span class="contact__label">Instagram</span>@ti4go.c
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Tiago Casaca</span>
+    <a href="#inicio" data-i18n="footer.top">voltar ao topo ↑</a>
+  </footer>
+
+  <!-- ========== CARTA DE APRESENTAÇÃO ========== -->
+  <dialog class="letter" id="letter" aria-labelledby="letterTitle">
+    <button type="button" class="letter__close" id="closeLetter" aria-label="Fechar">✕</button>
+    <header class="letter__head">
+      <p class="letter__kicker" id="letterTitle" data-i18n="letter.title">Carta de apresentação</p>
+      <h2 class="letter__name">Tiago Casaca</h2>
+      <p class="letter__contacts">+351 933 180 583 · 5781@eclisboa.net</p>
+    </header>
+    <!-- O texto da carta vem de js/i18n.js (chave "letter.body"), nas três línguas -->
+    <div class="letter__body" data-i18n="letter.body"></div>
+  </dialog>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
